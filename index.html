@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typing Master</title>
+
+  <!-- Main CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Font -->
+
+</head>
+
+<body class="bg-light">
+
+  <!-- Main User Input Form -->
+  <div class="container-fluid main-form bg-light p-3">
+    <div class="row d-flex justify-content-center text-center">
+      <div class="col-md-8 col-xl-5 col-lg-6 col-11 card border-0 box-shadow p-3 bg-white rounded">
+        <h1 class="text-center mb-3 text-primary wlc">Welcome!</h1>
+        <p class="mb-2">Please write your info to start the game.</p>
+        <p class="text-center alert-msg"></p>
+        <form class="pl-3 pr-3">
+          <div class="form-group">
+            <input class="form-control border-primary" id="name" placeholder="Your name?" type="text" autofocus
+              maxlength="30" required />
+          </div>
+          <div class="form-group">
+            <input class="form-control border-primary" id="age" max="99" min="6" placeholder="Your age?" type="number"
+              maxlength="2" required />
+          </div>
+          <div class="form-group">
+            <input class="form-control border-primary" id="country" placeholder="Your country name?" type="text"
+              maxlength="30" required />
+          </div>
+
+          <p class="text-muted" disabled>Game Difficulty?</p>
+          <!-- <div class="form-check form-check-inline">
+            <label class="form-check-label" for="easy">
+              <input class="form-check-input radio-inline" type="radio" name="difficulty" id="easy" value="Easy"
+                checked />Easy</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <label class="form-check-label" for="medium">
+              <input class="form-check-input radio-inline" type="radio" name="difficulty" id="medium"
+                value="Medium" />Medium</label>
+          </div>
+
+          <div class=" form-check form-check-inline">
+
+            <label class="form-check-label" for="hard"><input class="form-check-input radio-inline" type="radio"
+                name="difficulty" id="hard" value="Hard" />Hard</label>
+          </div> -->
+
+
+          <div class="btn button-group">
+            <button type="button" class="btn btn-primary btn-sm m-1" id="easy">Easy</button>
+            <button type="button" class="btn btn-primary btn-sm m-1" id="medium">Medium</button>
+            <button type="button" class="btn btn-primary btn-sm m-1" id="hard">Hard</button>
+            <button type="button" class="btn btn-primary btn-sm m-1" id="practice">Practice</button>
+          </div>
+
+          <button type="submit" id="submit"
+            class="btn mt-3 mb-2 btn-block btn-primary box-shadow rounded font-weight-bold">
+            Let's Go!
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End of Main User Input Form -->
+
+  <!-- Dashboard -->
+  <!-- Navbar-->
+
+  <nav class="navbar rounded navbar-light navbar-static-top bg-white box-shadow">
+    <a class="navbar-brand ml-5" href="index.html">
+      <img src="badge.svg" alt="" />
+      Typing Master
+    </a>
+    <h6 class="mr-5 text-dark">
+      Howdy, <span id="navusername" class="font-weight-bold text-primary"></span>
+    </h6>
+  </nav>
+
+  <!-- End of Navbar -->
+
+  <!-- Main Section and Tabs -->
+  <div class="container mt-5 mb-5">
+    <div class="row d-flex justify-content-center text-center">
+      <!-- Big Tab -->
+      <div class="col-11 col-lg-8 card card-body border-0 bg-white p-5 mb-3 text-dark rounded box-shadow">
+        <p id="message" class="text-success mt-2" style="height: 20px;"></p>
+        <!-- Time Circle Progress -->
+        <div class="card border-0 m-auto">
+          <div class="row">
+
+            <div class="col-md-6 col-12">
+              <div id="circle"></div>
+              <strong id="second"
+                style="position: absolute;top: 100px;left: auto; width: 100%; text-align: center; line-height: 40px;font-size: 70px;"></strong>
+            </div>
+
+          </div>
+        </div>
+        <!-- End Time Circle Progress -->
+
+        <!-- Genereted Words -->
+        <label for="word-input">
+          <h1 class="text-dark mt-2">
+            <span class="text-muted">"</span>
+            <span id="gen-words">...</span>
+            <span class="text-muted">"</span>
+          </h1>
+        </label>
+        <!-- End Genereted Words -->
+
+        <!-- Input Field for Typing the Genereted Text -->
+        <input type="text" id="word-input" class="form-control border-primary text-dark mt-2"
+          placeholder="Write the word shown above..." maxlength="40">
+
+      </div>
+
+      <!-- Side Tab -->
+      <div class="col-lg-4 col-12">
+        <div class="card border-0 box-shadow mb-3">
+          <div class="card-body">
+            <!-- Player's Info -->
+            <h4 class="card-header text-center bg-white text-dark">Player's Info </h4>
+            <div class="details p-3 text-justify">
+              <h6>Name: <span class="float-right text-primary" id="username"></span></h6>
+              <h6>Age: <span class="float-right text-primary" id="userAge"></span></h6>
+              <h6>Country: <span class="float-right text-primary" id="userCountry"></span></h6>
+
+              <!-- Game Info -->
+              <h4 class="card-header text-center bg-white text-dark">Game Info</h4>
+              <h6 class="mt-3">Total Time: <span class="float-right text-success" id="totaltime"></span></h6>
+              <h6>Game Level: <span class="float-right text-danger" id="gamelevel"></span></h6>
+              <h6>Score: <span class="float-right text-success" id="currentscore"></span>
+              </h6>
+              <h6>Highscore: <span class="float-right text-success" id="highscore"></span>
+              </h6>
+
+              <p class="text-center mt-5">Made With <span class="text-danger">
+                  ❤️</span> By Al Nahian</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Dashboard -->
+
+    <!-- Required JS Files -->
+    <!-- Jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+    <script src="circle.js"></script>
+
+</body>
+
+</html>
