@@ -22,6 +22,12 @@ body {
   /* margin: 50px 0; enable it only for the small screen later */
 }
 
+@media (max-width:767px) {
+  #second {
+    left: 0 !important;
+  }
+}
+
 input {
   text-align: center !important;
   text-transform: capitalize;
